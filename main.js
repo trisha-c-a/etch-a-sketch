@@ -14,6 +14,23 @@ function createGrid(N) {
     square.style.height = `${squareSize}px`;
     container.appendChild(square);
   }
+
+  // Hover effect using JS and CSS
+  document.body.addEventListener('mouseover', e => {
+    let button = e.target.closest('.square');
+    if (!button) { return; }
+    clearTimeout(button._hoverTimeout);
+    button.style.backgroundColor = 'pink';
+  });
+
+  document.body.addEventListener('mouseout', e => {
+    let button = e.target.closest('.square');
+    if (!button) { return; }
+    button._hoverTimeout = setTimeout(() => {
+      button.style.backgroundColor = '';
+    }, 500);
+  });
+
 }
 
 createGrid(N);

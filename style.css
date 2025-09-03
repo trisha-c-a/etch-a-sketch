@@ -22,4 +22,5 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 12px;
+    transition: background-color 0.5s ease; /*Used for the hover effect*/
 }
