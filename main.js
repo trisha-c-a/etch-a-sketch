@@ -1,6 +1,15 @@
 const container = document.querySelector(".container");
 const N = 16;
 
+//Generates a random color for each square
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+//Creates a grid
 function createGrid(N) {
   const totalSquares = N * N;
   const squareSize = 500/(N+1);
@@ -20,7 +29,7 @@ function createGrid(N) {
     let button = e.target.closest('.square');
     if (!button) { return; }
     clearTimeout(button._hoverTimeout);
-    button.style.backgroundColor = 'pink';
+    button.style.backgroundColor = getRandomColor();
   });
 
   document.body.addEventListener('mouseout', e => {
@@ -28,7 +37,7 @@ function createGrid(N) {
     if (!button) { return; }
     button._hoverTimeout = setTimeout(() => {
       button.style.backgroundColor = '';
-    }, 500);
+    }, 1000);
   });
 
 }
